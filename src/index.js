@@ -39,7 +39,10 @@ app.post("/post", (req, res) => {
 
 app.get('/downloadproductfeed', async (req, res) => {
   try {
-    const response = await fetch('https://www.applianceworldonline.com/media/feeds/feed_15.txt', {
+    const timestamp = new Date().getTime(); // Current time in milliseconds
+    const url = `https://www.applianceworldonline.com/media/feeds/feed_15.txt?timestamp=${timestamp}`;
+
+    const response = await fetch(url, {
       headers: {
         'Content-Type': 'text/plain',
         'Cache-Control': 'no-cache, no-store, must-revalidate',
